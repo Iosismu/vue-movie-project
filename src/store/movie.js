@@ -1,6 +1,7 @@
 import axios from 'axios'
 import _uniqBy from 'lodash/uniqBy'
 
+
 const _defaultMessage = 'Search for the movie title!!'
 
 export default {
@@ -75,7 +76,7 @@ export default {
             })
           }
         }
-      } catch (message) { // state변경 메소드를 이용해서 전체 컴포넌트로 에러 메시지를 가져 갈 수 있고 화면에 뿌린다.
+      } catch ({ message }) { // state변경 메소드를 이용해서 전체 컴포넌트로 에러 메시지를 가져 갈 수 있고 화면에 뿌린다.
         commit('updateState', {
           movies: [], // 에러가 나면 초기화
           message: message // 같은 이름이면 생략가능
@@ -114,24 +115,8 @@ export default {
   }
 }
 
-function _fetchMovie(payload) { // fetchMovie가 복잡해 질 수록 반대로 재활용성이 올라간다.
-  const { title, type, year, page, id } = payload
-  const OMDB_APY_KEY = '7035c60c'
-  const url = id // 삼항 연산자로 id값이 있을 경우 앞에 없을경우 뒤에꺼 넣는다
-  ? `https://www.omdbapi.com/?apikey=${OMDB_APY_KEY}&i=${id}` // 영화 개별로 요청
-  : `https://www.omdbapi.com/?apikey=${OMDB_APY_KEY}&s=${title}&type=${type}&y=${year}&page=${page}` // 전체 영화 검색 정보 요청
-
-  return new Promise((resolve, reject) => {
-    axios.get(url)
-      .then(res => {
-        if (res.data.Error) { // 에러가 then에서 실행 될때 예외 처리 해줘야함
-          reject(res.data.Error)
-        }
-        resolve(res)
-      })
-      .catch((err) => {
-        reject(err.message)
-      })
-  })
+async function _fetchMovie(payload) { // fetchMovie가 복잡해 질 수록 반대로 재활용성이 올라간다.
+  return await axios.post('/.netlify/functions/movie', payload) // Serverless 함수로 post로 요청
+  // get은 쿼리스트링으로 요청을하게 되면 풀어서 하나하나 넣어야되서 되게 불편함 그래서 post
 }
 
