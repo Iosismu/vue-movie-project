@@ -1,0 +1,28 @@
+// Default variable overrides
+$primary: pink;
+
+// $theme-colors: (
+//   "primary":    orange,
+//   "secondary":  orange,
+//   "success":    orange,
+//   "info":       orange,
+//   "warning":    orange,
+//   "danger":     orange,
+//   "light":      orange,
+//   "dark":       orange
+// ); 전체 색을 바꾸고 싶을땐 Required 위에다가 해도된고 만약 몃개만 바꿀거면 밑에다
+
+$container-max-widths: (
+  sm: 540px,
+  md: 704px,
+  lg: 924px,
+  xl: 1140px,
+  xxl: 1364px
+);
+
+// Required
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables"; // 각 스타일 정의 되있음.
+@import "../../node_modules/bootstrap/scss/mixins";
+
+@import "../../node_modules/bootstrap/scss/bootstrap"; // 마지막 .scss 확장자 생략 가능
