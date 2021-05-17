@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     isMatch(path) {
-      if (!path) return
+      if (!path) return false
       console.log(this.$route)
       return path.test(this.$route.fullPath) // test메소드를 통해서 route에서 주는 path와 path에 지정해논 값이 같으면 true
     },
