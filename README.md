@@ -133,7 +133,7 @@ async function _fetchMovie(payload) {
  <img src='./images/detail.PNG' width="800px" height="450px">
 </p>
 
-- MovieList에서 Props로 받은 movie data를 가지고 Vue에서 제공하는 RouterLink를 이용해서 영화 상세 페이지로 이동 합니다.
+- MovieList에서 Props로 받은 movie data를 가지고 Vue-Router에서 제공하는 RouterLink를 이용해서 영화 상세 페이지로 이동 합니다.
 - RouterLink 넘어왔으니 url로 '/movie/:id' :id값을 가져온 후, 해당 id값으로 OMBD API에 해당 id의 영화 정보를 가져와서 화면에 뿌려줍니다.
 
 # <배포>
