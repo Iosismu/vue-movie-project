@@ -82,6 +82,8 @@ $ npm run dev
 </p>
 
 - Nelify에서 Severless 함수를 만들어서 API키가 노출 되지 않도록 기능 구현 했습니다.
+- 영화 제목을 입력하고 Apply버튼을 누르면 title data가 API 요청에 들어간 후, 요청에 맞는 데이터가 반환되고 해당 data를 State에 updateState됩니다.
+- MovieList에서 mapState를 통해서 state값을 가져오고 MovieItem컴포넌트 안에서 v-for로 검색 결과 만큼 반복해주고 Props로 내려준 데이터를 MovieItem컴포넌트 안에서 Image, title, content 데이터를 보여줍니다.
 
 ```javascript
 const axios = require('axios')
